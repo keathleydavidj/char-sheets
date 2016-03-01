@@ -50,5 +50,6 @@ function isLoggedIn(req, res, next) {
     return next();
 
   // if they aren't redirect them to the home page
+  req.session.error = 'Please sign in!';
   res.redirect('/');
 }

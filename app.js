@@ -1,32 +1,55 @@
 var express = require('express'),
-    path = require('path'),
-    favicon = require('serve-favicon'),
-    logger = require('morgan'),
-    cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser'),
-    mongoose = require('mongoose'),
-    session = require('express-session'),
-    passport = require('passport'),
-    flash = require('connect-flash');
+  path = require('path'),
+  favicon = require('serve-favicon'),
+  logger = require('morgan'),
+  cookieParser = require('cookie-parser'),
+  bodyParser = require('body-parser'),
+  mongoose = require('mongoose'),
+  session = require('express-session'),
+  MongoDBStore = require('connect-mongodb-session')(session),
+  passport = require('passport'),
+  flash = require('connect-flash');
 
 var routes = require('./routes/index');
 // var users = require('./routes/users');
 
 var app = express();
 
+mongoose.connect(process.env.CHAR_MLAB_DB);
+
+// open second connection pool for storing sessions
+var store = new MongoDBStore({
+  uri: process.env.CHAR_MLAB_DB,
+  collection: 'sessions'
+});
+
+// Catch errors
+store.on('error', function(error) {
+  assert.ifError(error);
+  assert.ok(false);
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
-mongoose.connect(process.env.CHAR_MLAB_DB);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
-app.use(session({secret: 'supernova', saveUninitialized: true, resave: true}));
+app.use(session({
+  secret: 'supernova',
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 14 // 2 weeks
+  },
+  saveUninitialized: true,
+  resave: true,
+  store: store
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());

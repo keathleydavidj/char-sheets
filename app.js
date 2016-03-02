@@ -15,6 +15,7 @@ var routes = require('./routes/index');
 
 var app = express();
 
+//========DB CONNECTIONS=============
 mongoose.connect(process.env.CHAR_MLAB_DB);
 
 // open second connection pool for storing sessions
@@ -29,6 +30,7 @@ store.on('error', function(error) {
   assert.ok(false);
 });
 
+//========APP CONFIGURATION=============
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -76,8 +78,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
-
+//========ERROR HANDLERS=============
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {

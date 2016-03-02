@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+  User = require('./user');
 
 var stat = {score: Number, mod: Number};
 var skill = {
@@ -30,7 +31,7 @@ var characterSchema = new mongoose.Schema({
     int: skill,
     wis: skill,
     char: skill
-  }
+  },
   skills: {
     acrobatics: skill,
     animal: skill,
@@ -41,7 +42,7 @@ var characterSchema = new mongoose.Schema({
     insight: skill,
     intimidation: skill,
     investigation: skill,
-    medicine skill,
+    medicine: skill,
     nature: skill,
     perception: skill,
     performance: skill,

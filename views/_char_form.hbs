@@ -1,0 +1,31 @@
+<div class="jumbotron">
+  {{#if message}}
+    <div class="alert alert-danger">{{ message }}</div>
+  {{/if}}
+  <h1>New Character Sheet</h1>
+
+  <form id="new-char-form" action="/api/character" method="post">
+    <input type="hidden" name="userId" value="{{ user._id }}">
+    <div>
+      <p></p>
+      <label>Name:</label>
+      <input type="text" name="name" />
+    </div>
+    <div>
+      <label>Race:</label>
+      <input type="text" name="race" />
+    </div>
+    <div>
+      <label>Class:</label>
+      <input type="text" name="charClass" />
+    </div>
+    <div>
+      <label>Alignment:</label>
+      <input type="text" name="alignment" />
+    </div>
+    <div>
+      <input type="submit" class="btn btn-primary btn-sm" value="Create" />
+    </div>
+  </form>
+
+</div>

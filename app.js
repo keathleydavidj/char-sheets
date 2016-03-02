@@ -10,8 +10,7 @@ var express = require('express'),
   passport = require('passport'),
   flash = require('connect-flash');
 
-var routes = require('./routes/index');
-// var users = require('./routes/users');
+var api = require('./routes/api/api');
 
 var app = express();
 
@@ -67,9 +66,10 @@ require('./config/passport')(passport);
 
 //========ROUTES=============
 // pass passport for configuration
-require('./routes/passport.js')(app, passport); // load our routes and pass in our app
+require('./routes/passport.js')(app, passport);
+// var routes = require('./routes/passport.js')(app, passport); // load our routes and pass in our app
 // app.use('/', routes);
-// app.use('/users', users);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

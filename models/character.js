@@ -10,7 +10,7 @@ var skill = {
 var characterSchema = new mongoose.Schema({
   name: String,
   player: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
-  class: String,
+  charClass: String,
   race: String,
   alignment: String,
   xp: {type: Number, default: 0},

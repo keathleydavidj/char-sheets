@@ -75,19 +75,30 @@ router.post('/campaign', function(req, res, next) {
 // Character routes
 // @todo split routes for chars and campaigns
 router.post('/character', function(req, res, next) {
-  var char = new Character({
-    player: req.body.userId,
-    name: req.body.name,
-    race: req.body.race,
-    charClass: req.body.charClass,
-    alignment: req.body.alignment
-  });
+  var id = req.body.userId,
+    char = new Character({
+      player: id,
+      name: req.body.name,
+      race: req.body.race,
+      charClass: req.body.charClass,
+      alignment: req.body.alignment
+    });
 
   char.save(function(err, char) {
     if (err) {
       console.log(err);
       throw err;
     }
+
+    User.updateById(id, {$addToSet: {'characters': char._id}},
+      function(err, raw) {
+        if (err) {
+          throw err;
+          console.log(err);
+        };
+        console.log(raw);
+      });
+
     res.status(200).json(char);
   });
 });

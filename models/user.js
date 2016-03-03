@@ -8,7 +8,8 @@ var userSchema = mongoose.Schema({
     email: String,
     password: String,
   },
-  campaigns: [{type: mongoose.Schema.Types.ObjectId, ref: 'Campaign'}]
+  campaigns: [{type: mongoose.Schema.Types.ObjectId, ref: 'Campaign'}],
+  characters: [{type: mongoose.Schema.Types.ObjectId, ref: 'Character'}]
 
 });
 

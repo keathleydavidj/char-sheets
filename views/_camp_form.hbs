@@ -1,0 +1,19 @@
+<div class="jumbotron">
+  {{#if message}}
+    <div class="alert alert-danger">{{ message }}</div>
+  {{/if}}
+  <h1>New Campaign</h1>
+
+  <form id="new-camp-form" action="/api/campaign" method="post">
+    <input type="hidden" name="userId" value="{{ user._id }}">
+    <div>
+      <p></p>
+      <label>Invite Players by e-mail address:</label>
+      <input type="text" name="players" />
+    </div>
+    <div>
+      <input type="submit" class="btn btn-primary btn-sm" value="Create" />
+    </div>
+  </form>
+
+</div>

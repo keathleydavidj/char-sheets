@@ -6,6 +6,17 @@
     {{user}}
   </p>
 
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function(event) {
+    $.ajax({
+      url: '/api/users/{{ user._id }}',
+    })
+    .done(function( data, textStatus, jqXHR ) {
+      console.log(data);
+    });
+  });
+</script>
+
 {{else}}
 
   <p>

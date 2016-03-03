@@ -12,6 +12,12 @@ module.exports = function(app, passport) {
     });
   });
 
+  app.get('/new-camp', isLoggedIn, function(req, res, next) {
+    res.render('_camp_form', {
+      'user': req.user
+    });
+  });
+
   app.get('/new-char', isLoggedIn, function(req, res, next) {
     res.render('_char_form', {
       'user': req.user

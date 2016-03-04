@@ -6,7 +6,6 @@ var express = require('express'),
   bodyParser = require('body-parser'),
   mongoose = require('mongoose'),
   session = require('express-session'),
-  MongoDBStore = require('connect-mongodb-session')(session),
   passport = require('passport'),
   flash = require('connect-flash');
 
@@ -17,17 +16,20 @@ var app = express();
 //========DB CONNECTIONS=============
 mongoose.connect(process.env.CHAR_MLAB_DB);
 
-// open second connection pool for storing sessions
-var store = new MongoDBStore({
-  uri: process.env.CHAR_MLAB_DB,
-  collection: 'sessions'
-});
+if (app.get('env') === 'development') {
+  var MongoDBStore = require('connect-mongodb-session')(session),
+  // open second connection pool for storing sessions
+  var store = new MongoDBStore({
+    uri: process.env.CHAR_MLAB_DB,
+    collection: 'sessions'
+  });
 
-// Catch errors
-store.on('error', function(error) {
-  assert.ifError(error);
-  assert.ok(false);
-});
+  // Catch errors
+  store.on('error', function(error) {
+    assert.ifError(error);
+    assert.ok(false);
+  });
+};
 
 //========APP CONFIGURATION=============
 // view engine setup
@@ -43,7 +45,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(session({
-  secret: 'supernova',
+  secret: process.env.SESSION_SECRET,
   cookie: {
     maxAge: 1000 * 60 * 60 * 24 * 14 // 2 weeks
   },

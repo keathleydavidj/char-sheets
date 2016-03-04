@@ -17,7 +17,7 @@ var app = express();
 mongoose.connect(process.env.CHAR_MLAB_DB);
 
 if (app.get('env') === 'development') {
-  var MongoDBStore = require('connect-mongodb-session')(session),
+  var MongoDBStore = require('connect-mongodb-session')(session);
   // open second connection pool for storing sessions
   var store = new MongoDBStore({
     uri: process.env.CHAR_MLAB_DB,

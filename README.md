@@ -7,8 +7,8 @@ First:
 npm install
 ```
 Configuration:
-For development, note the MongoDB connection string is used in two places for storing sessions to your mongo database.
-The node module 'connect-mongodb-session' does need to create a second connection pool to achieve this
+  For development, note the MongoDB connection string is used in two places for storing sessions to your mongo database.
+  The node module 'connect-mongodb-session' does need to create a second connection pool to achieve this, that is intentional.
 
 
 Technologies used:  
@@ -20,3 +20,4 @@ Technologies used:
 Technologies in the works:
   -Front end framework (most likely AngularJS)
   -PhantomJS for generating downloadable PDFs
+  -SendGrid for sending invite e-mail to users and new users

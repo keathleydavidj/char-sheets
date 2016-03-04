@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default col-xs-12 col-md-6">
+      <form class="container" id="basic">
+        <div class="form-group row">
+          <p></p>
+          <label for="player" class="col-sm2 form-control-label">Player</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" name="player" value="{{char.player.handle}}">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="name" class="col-sm-2 form-control-label">Name</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" name="name" value="{{char.name}}">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="race" class="col-sm-2 form-control-label">Race</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" name="race" value="{{char.race}}">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="charClass" class="col-sm-2 form-control-label">Class</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" name="charClass" value="{{char.charClass}}">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="alignment" class="col-sm-2 form-control-label">Alignment</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" name="alignment" value="{{char.alignment}}">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="xp" class="col-sm-2 form-control-label">XP</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="number" name="xp" value="{{char.xp}}">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default col-xs-12 col-md-6">
+  <div class="panel-heading">
+    Base Stats
+  </div>
+  <table class="table">
+    <tr>
+      <th>
+        Strength
+      </th>
+      <th>
+        Dexterity
+      </th>
+      <th>
+        Constitution
+      </th>
+      <th>
+        Intelligence
+      </th>
+      <th>
+        Wisdom
+      </th>
+      <th>
+        Charisma
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <input class="form-control" type="number" name="strength" value="{{char.stats.str.score}}">
+      </td>
+      <td>
+        <input class="form-control" type="number" name="dexterity" value="{{char.stats.dex.score}}">
+      </td>
+      <td>
+        <input class="form-control" type="number" name="constitution" value="{{char.stats.const.score}}">
+      </td>
+      <td>
+        <input class="form-control" type="number" name="intelligence" value="{{char.stats.int.score}}">
+      </td>
+      <td>
+        <input class="form-control" type="number" name="wisdom" value="{{char.stats.wis.score}}">
+      </td>
+      <td>
+        <input class="form-control" type="number" name="charisma" value="{{char.stats.char.score}}">
+      </td>
+    </tr>
+  </table>
+  <!-- <form class="form-group" id="stats">
+
+
+    <input class="form-control" type="number" name="constitution" value="{{char.stats.const.score}}">
+
+    <input class="form-control" type="number" name="wisdom" value="{{char.stats.wis.score}}">
+
+  </form> -->
+</div>
+<div class="panel panel-default col-xs-12 col-md-6">
+  <form class="form-group" id="saving-throws">
+    <input class="form-control" type="number" name="strength" value="{{char.stats.str.score}}">
+    <input class="form-control" type="number" name="dexterity" value="{{char.stats.dex.score}}">
+    <input class="form-control" type="number" name="constitution" value="{{char.stats.const.score}}">
+    <input class="form-control" type="number" name="intelligence" value="{{char.stats.int.score}}">
+    <input class="form-control" type="number" name="wisdom" value="{{char.stats.wis.score}}">
+    <input class="form-control" type="number" name="charisma" value="{{char.stats.char.score}}">
+  </form>
+</div>

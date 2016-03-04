@@ -17,22 +17,25 @@ router.get('/users/:id', function(req, res, next) {
       }
    })
     .exec(function(err, user) {
-      // var options = {
-      //   path: 'campaigns.charSheets',
-      //   model: 'Character'
-      // };
-
       if (err) {
         res.status(500).json(err);
         console.log(err);
       };
-      // User.populate(user, options, function(err, user) {
-      //   if (err) {
-      //     res.status(500).json(err);
-      //     console.log(err);
-      //   };
-      // });
       res.json(user);
+    });
+});
+
+router.get('/characters/:id', function(req, res, next) {
+  Character.findById(req.params.id)
+    .lean()
+    .populate({
+      path: 'player',
+      model: 'User',
+      select: 'handle'
+    })
+    .exec(function(err, char) {
+      if (err) throw err;
+      res.render('character', {char: char});
     });
 });
 

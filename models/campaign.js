@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
   Character = require('./character');
 
 var campaignSchema = mongoose.Schema({
+  name: {type: 'String', required: true},
   gameMaster: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
   charSheets: [{type: mongoose.Schema.Types.ObjectId, ref: 'Character'}],
 });

@@ -1,11 +1,10 @@
 var mongoose = require('mongoose'),
   User = require('./user');
 
-var stat = {score: Number, mod: Number};
-var skill = {
-    score: Number,
-    prof: {type: Boolean, default: false}
-};
+// var skill = {
+//     score: Number,
+//     prof: {type: Boolean, default: false}
+// };
 
 var characterSchema = new mongoose.Schema({
   name: String,
@@ -15,43 +14,43 @@ var characterSchema = new mongoose.Schema({
   alignment: String,
   xp: {type: Number, default: 0},
   stats: {
-    str: stat,
-    dex: stat,
-    const: stat,
-    int: stat,
-    wis: stat,
-    char: stat
+    str: Number,
+    dex: Number,
+    const: Number,
+    int: Number,
+    wis: Number,
+    char: Number
   },
   inspire: Number,
   profBonus: Number,
-  saving: {
-    str: skill,
-    dex: skill,
-    const: skill,
-    int: skill,
-    wis: skill,
-    char: skill
-  },
-  skills: {
-    acrobatics: skill,
-    animal: skill,
-    arcana: skill,
-    athletics: skill,
-    deception: skill,
-    history: skill,
-    insight: skill,
-    intimidation: skill,
-    investigation: skill,
-    medicine: skill,
-    nature: skill,
-    perception: skill,
-    performance: skill,
-    persuasion: skill,
-    religion: skill,
-    slight: skill,
-    stealth: skill,
-    survival: skill
-  },
+  // saving: {
+  //   str: skill,
+  //   dex: skill,
+  //   const: skill,
+  //   int: skill,
+  //   wis: skill,
+  //   char: skill
+  // },
+  // skills: {
+  //   acrobatics: skill,
+  //   animal: skill,
+  //   arcana: skill,
+  //   athletics: skill,
+  //   deception: skill,
+  //   history: skill,
+  //   insight: skill,
+  //   intimidation: skill,
+  //   investigation: skill,
+  //   medicine: skill,
+  //   nature: skill,
+  //   perception: skill,
+  //   performance: skill,
+  //   persuasion: skill,
+  //   religion: skill,
+  //   slight: skill,
+  //   stealth: skill,
+  //   survival: skill
+  // },
   armorClass: Number,
   initative: Number,
   speed: Number,

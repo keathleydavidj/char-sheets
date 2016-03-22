@@ -13,6 +13,7 @@ var characterSchema = new mongoose.Schema({
   race: String,
   alignment: String,
   xp: {type: Number, default: 0},
+  avatarUrl: String,
   stats: {
     str: Number,
     dex: Number,

@@ -7,6 +7,7 @@ var express = require('express'),
   mongoose = require('mongoose'),
   session = require('express-session'),
   passport = require('passport'),
+  assert = require('assert'),
   flash = require('connect-flash');
 
 var api = require('./routes/api/api');

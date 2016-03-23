@@ -67,10 +67,8 @@ var characterSchema = new mongoose.Schema({
   dSaves: {
     success: {type: Number, default: 0},
     fail: {type: Number, default: 0}
-  },
-  created_at: Date,
-  updated_at: Date
-});
+  }
+}, {timestamps: true});
 
 var Character = mongoose.model('Character', characterSchema);
 

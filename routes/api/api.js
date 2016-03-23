@@ -7,20 +7,26 @@ var User = require('../../models/user'),
 router.get('/users/:id', function(req, res, next) {
   var id = req.params.id;
   User.findById(id)
-    .lean()
+    // .lean()
     .populate({
       path: 'campaigns',
+      model: 'Campaign',
       populate: {
         path: 'charSheets',
         model: 'Character',
         match: { 'player': id }
       }
    })
+    .populate({
+      path: 'characters',
+      model: 'Character'
+    })
     .exec(function(err, user) {
       if (err) {
         res.status(500).json(err);
         console.log(err);
       };
+      console.log(user);
       res.json(user);
     });
 });

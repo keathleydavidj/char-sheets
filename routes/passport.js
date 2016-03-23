@@ -1,14 +1,34 @@
 module.exports = function(app, passport) {
+  var User = require('../models/user'),
+      Campaign = require('../models/campaign'),
+      Character = require('../models/character');
 
   // HOME PAGE (with login links) ========
   app.get('/', function(req, res) {
-    res.render('index'); // load the index.ejs file
+    res.render('index', {layout: null}); // load the index file
   });
 
 
   app.get('/dashboard', isLoggedIn, function(req, res, next) {
-    res.render('dashboard', {
-      'user': req.user
+    User.findById(req.user._id)
+    .lean()
+    .populate({
+      path: 'campaigns',
+      model: 'Campaign'
+   })
+    .populate({
+      path: 'characters',
+      model: 'Character'
+    })
+    .exec(function(err, user) {
+      if (err) {
+        res.status(500).json(err);
+        console.log(err);
+      };
+      req.user = user;
+      res.render('dashboard', {
+        'user': req.user
+      });
     });
   });
 

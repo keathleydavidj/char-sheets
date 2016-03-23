@@ -51,7 +51,7 @@
 	            <!-- start: User Dropdown -->
 	            <li class="dropdown">
 	              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-	                <i class="halflings-icon white user"></i> {{user.local.username}}
+	                <i class="halflings-icon white user"></i> {{user.local.email}}
 	                <span class="caret"></span>
 	              </a>
 	              <ul class="dropdown-menu">
@@ -59,12 +59,12 @@
 	                  <span>Account Settings</span>
 	                </li>
 	                <li><a href="#"><i class="halflings-icon user"></i> Profile</a></li>
-	                <li><a href="/logou"t><i class="halflings-icon off"></i> Logout</a></li>
+	                <li><a href="/logout"><i class="halflings-icon off"></i> Logout</a></li>
 	              </ul>
 	            </li>
 						{{else}}
 							
-							<li><a href="/logout"><i class="icon-lock"></i><span>Login</span></a></li>
+							<li><a href="/login"><i class="icon-lock"></i><span>Login</span></a></li>
 
           	{{/if}}
             <!-- end: User Dropdown -->

@@ -29,7 +29,16 @@ module.exports = function(app, passport) {
 
     // render the page and pass in any flash data if it exists
     res.render('login', {
-      message: req.flash('signupMessage')
+      message: req.flash('signupMessage'),
+      layout: null //render without using the layout template
+    });
+  });
+
+  app.get('/signup', function(req, res) {
+
+    res.render('signup', {
+      message: req.flash('signupMessage'),
+      layout: null
     });
   });
 

@@ -46,12 +46,17 @@
             <a href="index.html"><i class="halflings-icon home"></i></a>
             <a href="#"><i class="halflings-icon cog"></i></a>
           </div>
-          <h2>Login to your account</h2>
-          <form class="form-horizontal" action="index.html" method="post">
+          <h2>Create a new account</h2>
+          <form id="local-reg" class="form-horizontal" action="/signup" method="post">
             <fieldset>
               <div class="input-prepend" title="Username">
                 <span class="add-on"><i class="halflings-icon user"></i></span>
                 <input class="input-large span10" name="username" id="username" type="text" placeholder="type username" />
+              </div>
+              <div class="clearfix"></div>
+              <div class="input-prepend" title="Email">
+                <span class="add-on"><i class="halflings-icon envelope"></i></span>
+                <input class="input-large span10" name="email" id="email" type="text" placeholder="type email" />
               </div>
               <div class="clearfix"></div>
               <div class="input-prepend" title="Password">
@@ -59,18 +64,11 @@
                 <input class="input-large span10" name="password" id="password" type="password" placeholder="type password" />
               </div>
               <div class="clearfix"></div>
-              <label class="remember" for="remember">
-                <input type="checkbox" id="remember" />Remember me</label>
               <div class="button-login">
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
               </div>
               <div class="clearfix"></div>
           </form>
-          <hr>
-          <h3>Forgot Password?</h3>
-          <p>
-            No problem, <a href="#">click here</a> to get a new password.
-          </p>
         </div>
         <!--/span-->
       </div>
